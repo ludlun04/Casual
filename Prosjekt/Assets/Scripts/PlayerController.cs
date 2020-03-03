@@ -1,0 +1,57 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerController : MonoBehaviour
+{
+    [SerializeField] private float speed = 5f; // Movement speed
+    [SerializeField] private Transform arrow; // Pointing arrow
+    [SerializeField] private Camera cam; // Main camera
+    private Rigidbody2D rb; // Player Rigidbody
+
+    private Vector2 movement;
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
+
+        Vector2 direction = cam.ScreenToWorldPoint(Input.mousePosition) - arrow.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        arrow.rotation = rotation;
+    }
+
+    private void FixedUpdate()
+    {
+        Move();
+        
+    }
+    private void Move()
+    {
+        rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
+        if (rb.velocity.x < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            Debug.Log("hit");
+            Enemy enemy = other.gameObject.GetComponent<Enemy>();
+            enemy.BounceBack();
+        }
+    }
+}
