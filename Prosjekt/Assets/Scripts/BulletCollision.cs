@@ -5,9 +5,10 @@ using UnityEngine;
 public class BulletCollision : MonoBehaviour
 {
     [SerializeField] private GameObject bulletExplosion;
-    /*
+
     void OnCollisionEnter2D(Collision2D collision)
-    {      
+    {
+        Debug.Log(collision.gameObject.name);
         GameObject animation = Instantiate(bulletExplosion, transform.position, transform.rotation);
         Destroy(animation, 1.5f);
 
@@ -19,5 +20,5 @@ public class BulletCollision : MonoBehaviour
 
         Destroy(gameObject);
     }
-    */
+
 }
