@@ -8,7 +8,7 @@ public class Shooting : MonoBehaviour
     [SerializeField] private Transform firePoint;
 
     [SerializeField] private float bulletSpeed = 20f; // Velocity
-    [SerializeField] private float fireRate = 0.5f; // Per second
+    [SerializeField] private float fireRate = 2; // Per second
 
 
     private float timeSinceLastShot = 0f;
@@ -17,9 +17,9 @@ public class Shooting : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetButton("Fire1") && Time.time > timeSinceLastShot)
+        if (Input.GetButton("Fire1") && Time.time > timeSinceLastShot + 1 / fireRate)
         {
-            timeSinceLastShot = Time.time +  1 / fireRate;
+            timeSinceLastShot = Time.time;
             Shoot();
         }
     }
@@ -30,6 +30,5 @@ public class Shooting : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePoint.right * bulletSpeed, ForceMode2D.Impulse);
-
     }
 }

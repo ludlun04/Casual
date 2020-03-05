@@ -10,7 +10,7 @@ public class BulletCollision : MonoBehaviour
     {
         Debug.Log(collision.gameObject.name);
         GameObject animation = Instantiate(bulletExplosion, transform.position, transform.rotation);
-        Destroy(animation, 1.5f);
+        Destroy(animation, .8f);
 
         if (collision.gameObject.tag == "Enemy")
         {
