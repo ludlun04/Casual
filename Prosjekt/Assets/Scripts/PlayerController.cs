@@ -7,11 +7,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed = 5f; // Movement speed
     [SerializeField] private Transform arrow; // Pointing arrow
     [SerializeField] private Camera cam; // Main camera
+
+    [SerializeField] private int hp = 10; //Player hp
+    private int initialHp;
+    [SerializeField] private HealthBar healthbar;
     private Rigidbody2D rb; // Player Rigidbody
 
     private Vector2 movement;
     void Start()
     {
+        initialHp = hp;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -51,7 +56,23 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("hit");
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
-            enemy.BounceBack();
+            hp -= enemy.dealDamage();
+            float healthBarValue = (float)hp / initialHp;
+            if (hp <= 0)
+            {
+                healthbar.setHealth(0);
+                Die();
+            } 
+            else
+            {
+                healthbar.setHealth(healthBarValue);
+            }
+            
         }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 }

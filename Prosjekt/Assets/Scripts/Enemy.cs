@@ -7,8 +7,8 @@ public class Enemy : MonoBehaviour
 
     private Transform player;
     [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] private int damage = 1;
 
-    private float initialSpeed;
     private Rigidbody2D rb;
     private Vector3 direction;
     private float angle;
@@ -21,7 +21,6 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        initialSpeed = moveSpeed;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -37,15 +36,7 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (bounceTime != 0)
-        {
-            bounceTime--;
-        } else
-        {
-            moveSpeed = initialSpeed;
-            movecharacter(movement);
-        }
-        
+        movecharacter(movement);
     }
 
     void movecharacter(Vector2 direction)
@@ -66,6 +57,11 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
+    }
+
+    public int dealDamage()
+    {
+        return this.damage;
     }
 
     private void Die()
