@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 1079963}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -266,4 +266,4 @@ MonoBehaviour:
     type: 3}
   firePoint: {fileID: 1123735748}
   bulletSpeed: 20
-  fireRate: 5
+  fireRate: 50

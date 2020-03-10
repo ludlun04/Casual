@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
-    [SerializeField] private Transform player;
+    private Transform player;
     [SerializeField] private float moveSpeed = 2f;
 
     private float initialSpeed;
@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         initialSpeed = moveSpeed;
         rb = GetComponent<Rigidbody2D>();
     }
