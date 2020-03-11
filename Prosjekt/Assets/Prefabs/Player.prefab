@@ -250,7 +250,7 @@ MonoBehaviour:
   speed: 5
   arrow: {fileID: 4714295953320330992}
   cam: {fileID: 0}
-  hp: 10
+  hp: 100
   healthbar: {fileID: 0}
 --- !u!114 &1079963
 MonoBehaviour:

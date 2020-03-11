@@ -508,6 +508,21 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3116121291050761891, guid: ff319f462d5d70042b6deef227ed1a11,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3116121291050761891, guid: ff319f462d5d70042b6deef227ed1a11,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3116121291050761891, guid: ff319f462d5d70042b6deef227ed1a11,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3116121291050761895, guid: ff319f462d5d70042b6deef227ed1a11,
         type: 3}
       propertyPath: m_Name

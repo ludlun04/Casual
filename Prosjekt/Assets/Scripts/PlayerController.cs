@@ -16,7 +16,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement;
     void Start()
     {
-        initialHp = hp;
+        initialHp = hp; // Store max hp
+        healthbar.setText(hp.ToString() + " / " + initialHp.ToString()); // Display hp on start
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -61,11 +62,13 @@ public class PlayerController : MonoBehaviour
             if (hp <= 0)
             {
                 healthbar.setHealth(0);
+                healthbar.setText("0  / " + initialHp.ToString());
                 Die();
             } 
             else
             {
                 healthbar.setHealth(healthBarValue);
+                healthbar.setText(hp.ToString() + " / " + initialHp.ToString());
             }
             
         }
