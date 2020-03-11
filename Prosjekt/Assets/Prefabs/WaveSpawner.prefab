@@ -54,6 +54,11 @@ MonoBehaviour:
     rate: 2
   - name: wave3
     enemy: {fileID: 9139633369254877410, guid: ee070545d9d9a9b428c9ff0ee723a343, type: 3}
-    count: 400
+    count: 100
     rate: 20
   timeBetweenWaves: 3
+  positions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

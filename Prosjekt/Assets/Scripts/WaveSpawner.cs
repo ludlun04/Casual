@@ -23,6 +23,8 @@ public class WaveSpawner : MonoBehaviour
     private float searchCountdown = 1f;
 
     private spawnState state = spawnState.COUNTING;
+
+    [SerializeField] private List<Transform> positions;
     private void Start()
     {
         waveCountdown = timeBetweenWaves;
@@ -66,7 +68,7 @@ public class WaveSpawner : MonoBehaviour
 
         if (nextWave + 1 > waves.Length - 1)
         {
-            nextWave = 0;
+            nextWave = -1;
             Debug.Log("All waves complete, looping");
         }
         nextWave++;
@@ -107,7 +109,14 @@ public class WaveSpawner : MonoBehaviour
     {
         //Spawn enemy
         Debug.Log("Spawning enemy" + _enemy.name);
-        Instantiate(_enemy, transform.position, transform.rotation);
+        Transform randomPosition = GetRandomPosition();
+        Instantiate(_enemy, randomPosition.position, transform.rotation);
         
+    }
+
+    private Transform GetRandomPosition()
+    {
+        int randomIndex = Random.Range(0, positions.Count);
+        return positions[randomIndex];
     }
 }
