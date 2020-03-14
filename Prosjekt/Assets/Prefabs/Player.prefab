@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 5697460786699431869}
   - component: {fileID: 1880846829453683205}
   - component: {fileID: 3334765380492261123}
-  - component: {fileID: 1079963}
+  - component: {fileID: 1722790694}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -252,7 +252,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   hp: 100
   healthbar: {fileID: 0}
---- !u!114 &1079963
+--- !u!114 &1722790694
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -267,5 +267,5 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3925163771834210153, guid: f78a9f4ce3b48f14f894e8dffe04a46b,
     type: 3}
   firePoint: {fileID: 1123735748}
-  bulletSpeed: 30
-  fireRate: 12
+  bulletSpeed: 20
+  fireRate: 2

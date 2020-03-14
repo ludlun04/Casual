@@ -57,20 +57,25 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("hit");
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
-            hp -= enemy.dealDamage();
-            float healthBarValue = (float)hp / initialHp;
-            if (hp <= 0)
-            {
-                healthbar.setHealth(0);
-                healthbar.setText("0  / " + initialHp.ToString());
-                Die();
-            } 
-            else
-            {
-                healthbar.setHealth(healthBarValue);
-                healthbar.setText(hp.ToString() + " / " + initialHp.ToString());
-            }
-            
+            takeDamage(enemy.dealDamage()); 
+        }
+    }
+
+    public void takeDamage(int damage)
+    {
+        hp -= damage;
+        float healthBarValue = (float)hp / initialHp;
+
+        if (hp <= 0)
+        {
+            healthbar.setHealth(0);
+            healthbar.setText("0  / " + initialHp.ToString());
+            Die();
+        }
+        else
+        {
+            healthbar.setHealth(healthBarValue);
+            healthbar.setText(hp.ToString() + " / " + initialHp.ToString());
         }
     }
 

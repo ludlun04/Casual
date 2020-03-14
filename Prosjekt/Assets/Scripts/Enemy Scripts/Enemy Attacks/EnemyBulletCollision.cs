@@ -2,23 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletCollision : MonoBehaviour
+public class EnemyBulletCollision : MonoBehaviour
 {
     [SerializeField] private GameObject bulletExplosion;
+    [SerializeField] private int damage = 4;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision.gameObject.name);
+        Destroy(gameObject);
         GameObject animation = Instantiate(bulletExplosion, transform.position, transform.rotation);
         Destroy(animation, .8f);
 
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Player")
         {
-            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-            enemy.takeDamage();
+            PlayerController player = collision.gameObject.GetComponent <PlayerController>();
+            player.takeDamage(damage);
         }
 
-        Destroy(gameObject);
-    }
 
+    }
 }
